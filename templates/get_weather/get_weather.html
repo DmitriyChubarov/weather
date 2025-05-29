@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+<head>
+    <title>Прогноз погоды</title>
+</head>
+<body>
+	<div>
+	</div>
+    <div>
+        <h2>Узнайте погоду в любом городе</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Введите название города" value="{{ last_city }}" required>
+            <button type="submit">Узнать</button>
+        </form>
+        {% if error %}
+            {{ error }}
+        {% endif %}
+    </div>
+
+    {% if data %}
+    <div>
+        <h3>Текущая погода:</h3>
+        <p>🌡️ Температура: {{ data.current.temperature_2m }}°C</p>
+        <p>💧 Влажность: {{ data.current.relative_humidity_2m }}%</p>
+        <p>💨 Скорость ветра: {{ data.current.windspeed_10m }} м/с</p>
+        <p>🌧️ Осадки: {{ data.current.precipitation }} мм</p>
+        <p>⏰ Время суток: 
+            {% if data.current.is_day == 1 %}
+                ☀️ День
+            {% else %}
+                🌙 Ночь
+            {% endif %}
+        </p>
+    </div>
+    {% endif %}
+    {% if history %}
+    <div>
+        <h3>История запросов</h3>
+        <ul>
+            {% for item in history %}
+                <li> {{ item.city }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html> 
