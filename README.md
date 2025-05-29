@@ -32,7 +32,7 @@ GRANT ALL PRIVILEGES ON DATABASE weather to weather;
 mkdir /ваш/путь
 cd /ваш/путь
 ```
-Клонируем репозотирий в эту папку:<br><br>
+Клонируем репозотирий в эту папку:
 ```bash 
 git clone https://github.com/DmitriyChubarov/weather.git
 ```
@@ -50,7 +50,7 @@ pip install requests
 cd weather/
 python manage.py makemigrations
 python manage.py migrate
-python manage.py runserver`
+python manage.py runserver
 ```
 Возможности:
 - http://127.0.0.1:8000/get_weather/ - по этой  ссылке располагается основной функционал приложения
