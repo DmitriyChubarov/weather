@@ -1,9 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
-#urlpatterns = [
-#    path('', views.get_weather, name='get_weather'),
-#]
 urlpatterns = [
-    url(r'^', views.CityGet.as_view(), name='weather_api'),
+    path('', views.CityGet.as_view(), name='get_weather'),
 ]
+
